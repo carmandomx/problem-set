@@ -5,31 +5,32 @@ type Props = {
   person: Person;
 };
 
+
 // Start scope of the problem
-let currentPerson: Person;
 export default function Profile({ person }: Props) {
-  currentPerson = person;
+  // Move function so the scope is not the problem
+  function Header({ person }: Props) {
+    return <h1>{person.name}</h1>;
+  }
+  
+  function Avatar({ person }: Props) {
+    return (
+      <img
+        className="avatar"
+        src={getImageUrl(person)}
+        alt={person.name}
+        width={50}
+        height={50}
+      />
+    );
+  }
+  
   return (
     <Panel>
-      <Header />
-      <Avatar />
+      <Header person={person}/>
+      <Avatar person={person}/>
     </Panel>
   );
 }
 
 // End scope of the problem
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
-}
-
-function Avatar() {
-  return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
-  );
-}

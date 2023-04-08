@@ -10,10 +10,12 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
+
+  // By creating a new array, we prevent the bug, because the original array is not modify
+  let newStories =   [ ...stories, {
     id: "create",
     label: "Create Story",
-  });
+  }];
 
   return (
     <ul
@@ -23,7 +25,7 @@ const ProblemThree = ({ stories }: Props) => {
         textAlign: "center",
       }}
     >
-      {stories.map((story) => (
+      {newStories.map((story) => (
         <li key={story.id}>{story.label}</li>
       ))}
     </ul>
