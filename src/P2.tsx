@@ -15,6 +15,7 @@ const ProblemTwo = () => {
     imageId: "MK3eW3A",
     name: "Cypher Johnson",
   };
+  
 
   return (
     <>
