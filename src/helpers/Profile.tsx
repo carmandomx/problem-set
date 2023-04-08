@@ -6,30 +6,32 @@ type Props = {
 };
 
 // Start scope of the problem
-let currentPerson: Person;
+
 export default function Profile({ person }: Props) {
-  currentPerson = person;
+  // The components were impure, so made the currentPerson variable declaration to be inside the component...
+  // And made the other components be inside the main component "Profile"
+  let currentPerson: Person = person;
   return (
     <Panel>
       <Header />
       <Avatar />
     </Panel>
   );
-}
 
-// End scope of the problem
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
-}
+  // End scope of the problem
+  function Header() {
+    return <h1>{currentPerson.name}</h1>;
+  }
 
-function Avatar() {
-  return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
-  );
+  function Avatar() {
+    return (
+      <img
+        className="avatar"
+        src={getImageUrl(currentPerson)}
+        alt={currentPerson.name}
+        width={50}
+        height={50}
+      />
+    );
+  }
 }
