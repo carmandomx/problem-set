@@ -10,10 +10,14 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
+  //  For some reason the story was being pushed several times into the stories array, so reasigned the stories props to itself with the spread (...) operator
+  // and added the defaultStory object
+  const defaultStory = {
     id: "create",
     label: "Create Story",
-  });
+  };
+  // console.log(stories);
+  stories = [defaultStory, ...stories];
 
   return (
     <ul
