@@ -6,14 +6,16 @@ type Props = {
 };
 
 // Start scope of the problem
-let currentPerson: Person;
+var currentPerson: Person
 export default function Profile({ person }: Props) {
   currentPerson = person;
   return (
+    <>
     <Panel>
       <Header />
       <Avatar />
     </Panel>
+    </>
   );
 }
 
