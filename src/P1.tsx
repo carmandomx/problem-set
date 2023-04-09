@@ -6,12 +6,21 @@ type Props = {
 
 const ProblemOne = ({ time }: Props) => {
   let hours = time.getHours();
+  // Declare variable to store the class
+  let classname: string;
   if (hours >= 0 && hours <= 6) {
-    document.getElementById("time").className = "night";
+    // Add class night
+    classname = "night";
   } else {
-    document.getElementById("time").className = "day";
+    // Or add class day depending on the hour
+    classname = "day";
   }
-  return <h1 id="time">{time.toLocaleTimeString()}</h1>;
+
+  return (
+    <h1 className={classname} id="time">
+      {time.toLocaleTimeString()}
+    </h1>
+  );
 };
 
 export default ProblemOne;
