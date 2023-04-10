@@ -6,8 +6,8 @@ type Props = {
 };
 
 // Start scope of the problem
-let currentPerson: Person;
 export default function Profile({ person }: Props) {
+  let currentPerson: Person;
   currentPerson = person;
   return (
     <Panel>
@@ -15,21 +15,23 @@ export default function Profile({ person }: Props) {
       <Avatar />
     </Panel>
   );
+  function Header() {
+    return <h1>{currentPerson.name}</h1>;
+  }
+  
+  function Avatar() {
+    return (
+      <img
+        className="avatar"
+        src={getImageUrl(currentPerson)}
+        alt={currentPerson.name}
+        width={50}
+        height={50}
+      />
+    );
+  }
 }
 
 // End scope of the problem
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
-}
-
-function Avatar() {
-  return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
-  );
-}
+/*The problem was that the currentPerson variable was global so when you collapse and expand the first profile, it updates the currentPerson variable. 
+To fix the problem i just move the currentPerson variable inside the function as well as the functions Header and Avatar so they can use that variable as well. */ 

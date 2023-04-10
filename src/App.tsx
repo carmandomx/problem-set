@@ -11,7 +11,7 @@ let initialStories = [
 ];
 
 function App() {
-  let [stories, setStories] = useState([...initialStories]);
+  let [stories] = useState([...initialStories]);
   const time = useTime();
 
   // If you read this, this is not a good thing to do
