@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/p3.css";
+
 interface Story {
   id: number | string;
   label: string;
@@ -10,10 +11,7 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
-    id: "create",
-    label: "Create Story",
-  });
+  const newStories = [...stories, {id: "create",label: "Create Story",}];
 
   return (
     <ul
@@ -23,7 +21,7 @@ const ProblemThree = ({ stories }: Props) => {
         textAlign: "center",
       }}
     >
-      {stories.map((story) => (
+      {newStories.map((story) => (
         <li key={story.id}>{story.label}</li>
       ))}
     </ul>
@@ -31,3 +29,9 @@ const ProblemThree = ({ stories }: Props) => {
 };
 
 export default ProblemThree;
+
+/*The bug in this component was caused because the original stories array was being modified by pushing a new story into it.
+And since arrays are reference types in JavaScript, this modifies the original array passed as a prop. And React updates the page with the new array so that cause
+the bug where a new story is push each x time.
+
+To fix this, i created a new array "newStories" by spreading the original stories array and adding the “Create Story” placeholder at the end. This ensures that the original array is not modified and that the "Create Story" placeholder appears only once.*/
