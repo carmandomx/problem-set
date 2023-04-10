@@ -10,10 +10,8 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
-    id: "create",
-    label: "Create Story",
-  });
+  let extendedStories:Story[] = [{id:'create',label:'Create Story'}]
+  extendedStories = stories.concat(extendedStories)
 
   return (
     <ul
@@ -23,7 +21,7 @@ const ProblemThree = ({ stories }: Props) => {
         textAlign: "center",
       }}
     >
-      {stories.map((story) => (
+      {extendedStories.map((story) => (
         <li key={story.id}>{story.label}</li>
       ))}
     </ul>
