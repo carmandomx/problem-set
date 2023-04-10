@@ -1,4 +1,5 @@
 import React from "react";
+import "react/jsx-runtime"
 import "./styles/p1.css";
 type Props = {
   time: Date;
@@ -6,10 +7,13 @@ type Props = {
 
 const ProblemOne = ({ time }: Props) => {
   let hours = time.getHours();
-  if (hours >= 0 && hours <= 6) {
-    document.getElementById("time").className = "night";
-  } else {
-    document.getElementById("time").className = "day";
+  const timeElement = document.getElementById("time");
+  if (timeElement !== null) {
+    if (hours >= 0 && hours <= 6) {
+        timeElement.className = "night";
+    } else {
+        timeElement.className = "day";
+    }
   }
   return <h1 id="time">{time.toLocaleTimeString()}</h1>;
 };
