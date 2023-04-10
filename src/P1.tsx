@@ -7,11 +7,11 @@ type Props = {
 const ProblemOne = ({ time }: Props) => {
   let hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
-    document.getElementById("time").className = "night";
+    return <h1 className='night'>{time.toLocaleTimeString()}</h1>
   } else {
-    document.getElementById("time").className = "day";
+    return <h1 className="day">{time.toLocaleTimeString()}</h1>;
   }
-  return <h1 id="time">{time.toLocaleTimeString()}</h1>;
+  
 };
 
 export default ProblemOne;
