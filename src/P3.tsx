@@ -10,10 +10,10 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
+  let newStories = [...stories,{
     id: "create",
     label: "Create Story",
-  });
+  }];
 
   return (
     <ul
@@ -23,7 +23,7 @@ const ProblemThree = ({ stories }: Props) => {
         textAlign: "center",
       }}
     >
-      {stories.map((story) => (
+      {newStories.map((story) => (
         <li key={story.id}>{story.label}</li>
       ))}
     </ul>

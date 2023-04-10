@@ -6,8 +6,25 @@ type Props = {
 };
 
 // Start scope of the problem
-let currentPerson: Person;
+
 export default function Profile({ person }: Props) {
+  let currentPerson: Person;
+  function Header() {
+    return <h1>{currentPerson.name}</h1>;
+  }
+  
+  function Avatar() {
+    return (
+      <img
+        className="avatar"
+        src={getImageUrl(currentPerson)}
+        alt={currentPerson.name}
+        width={50}
+        height={50}
+      />
+    );
+  }
+  
   currentPerson = person;
   return (
     <Panel>
@@ -18,18 +35,3 @@ export default function Profile({ person }: Props) {
 }
 
 // End scope of the problem
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
-}
-
-function Avatar() {
-  return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
-  );
-}
