@@ -11,25 +11,16 @@ export default function Profile({ person }: Props) {
   currentPerson = person;
   return (
     <Panel>
-      <Header />
-      <Avatar />
+      <h1>{currentPerson.name}</h1>
+      <img
+        className="avatar"
+        src={getImageUrl(currentPerson)}
+        alt={currentPerson.name}
+        width={50}
+        height={50}
+      />
     </Panel>
   );
 }
 
 // End scope of the problem
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
-}
-
-function Avatar() {
-  return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
-  );
-}
