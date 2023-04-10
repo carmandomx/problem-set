@@ -10,10 +10,15 @@ type Props = {
 };
 
 const ProblemThree = ({ stories }: Props) => {
-  stories.push({
-    id: "create",
-    label: "Create Story",
-  });
+  const controlStories = [
+    //...stories make the same array of stories
+    //and then add the new story object at the end.
+    ...stories,
+    {
+      id: "create",
+      label: "Create Story",
+    },
+  ];
 
   return (
     <ul
@@ -23,7 +28,7 @@ const ProblemThree = ({ stories }: Props) => {
         textAlign: "center",
       }}
     >
-      {stories.map((story) => (
+      {controlStories.map((story) => (
         <li key={story.id}>{story.label}</li>
       ))}
     </ul>
